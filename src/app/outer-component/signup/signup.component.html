@@ -1,0 +1,95 @@
+<form class="col-md-5 mt-5" #signupFormVeriable='ngForm' (ngSubmit)=myFunc(signupFormVeriable)>
+    <div class="form-group">
+        <label for="name">First Name:</label>
+        <input type="text" class="form-control" ngModel #fname='ngModel' required maxlength="10" minlength="3"
+            pattern="" placeholder="Enter Name" name="name" autocomplete="off">
+
+        <div class="alert alert-danger" *ngIf="!fname.valid && (fname.touched || fname.dirty)">
+            <div *ngIf="fname.errors?.required">
+                name is required.
+            </div>
+            <div *ngIf="fname.errors?.minlength">
+                minlength 3 and max 10
+            </div>
+            <!-- <div *ngIf="fname.errors?.pattern">
+                your pattern is not correct
+            </div> -->
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="lname">Last Name:</label>
+        <input type="text" class="form-control" ngModel placeholder="Enter Last Name" name="lname" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" ngModel placeholder="Enter email" name="email" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" ngModel placeholder="Enter Address" name="address" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" ngModel placeholder="Enter password" name="pswd" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="country">Select Country:</label>
+        <select class='form-control' ngModel name="countrySel">
+            <option class='option' *ngFor='let citem of countryList' [value]="citem.value">{{citem.value}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="country">Select Gender:</label>
+        <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="gender" id="gen1" value="male">
+            <label class="form-check-label" for="gen1">
+                male
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" ngModel type="radio" name="gender" id="gen2" value="female">
+            <label class="form-check-label" for="gen2">
+                female
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="country">Select Qualification:</label>
+        <div class="form-check form-check" *ngFor='let item of checkList'>
+            <input class="form-check-input" type="checkbox" name="{{item.value}}" (change)="onChange()"
+                [(ngModel)]="item.isselected">
+            <label class="form-check-label" for="bachelor">{{item.value}}</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3 mb-5">Signup</button>
+
+    <input id="checkbox" type="checkbox" name="sendemail" (change)="onCH(isChecked)" [(ngModel)]="isChecked">
+    <p>{{isChecked ? 'checked' : 'unchecked' }}</p>
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+<!-- <select class='select-option'
+    #mySelect
+    (change)='onOptionsSelected(mySelect.value)'>
+   <option class='option' 
+   *ngFor='let option of dropDownData' 
+   [value]="option.seo_val">{{option.text_val}}</option>
+</select>
+
+
+onOptionsSelected(value:string){
+     console.log("the selected value is " + value);
+} -->

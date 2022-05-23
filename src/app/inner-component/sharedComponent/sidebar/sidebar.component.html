@@ -1,0 +1,22 @@
+<ul>
+    <li routerLinkActive="active"><a (click)=showUlMenu(1) [routerLink]="['/Overview']">Overview</a></li>
+    <li routerLinkActive="active"><a (click)=showUlMenu(2) [routerLink]="['/Profile']">Profile</a></li>
+    <li routerLinkActive="active"><a (click)=showUlMenu(3) [routerLink]="['/Userdetails']">Userdetails</a>
+        <ul *ngIf="currentMenu == 3">
+            <li><a [routerLink]="['/Userdetails/Activeuser']">Activeuser</a></li>
+            <li><a [routerLink]="['/Userdetails/Inactiveuser']">Inactiveuser</a></li>
+        </ul>
+    </li>
+    <li routerLinkActive="active"><a (click)=showUlMenu(4) [routerLink]="['/Example']">Example</a>
+        <ul *ngIf="currentMenu == 4">
+            <li><a href="javascript:;">Services 1</a></li>
+            <li><a href="javascript:;">Services 2</a></li>
+        </ul>
+    </li>
+</ul>
+
+<!-- <button (click)=showUlMenu(1) >Toggle display Div If</button>
+<div *ngIf="currentMenu == 1">This is ItSolutionStuff.com Div If. 1</div>
+<button (click)=showUlMenu(2) >Toggle display Div If</button>
+<div *ngIf="currentMenu == 2">This is ItSolutionStuff.com Div If. 2</div>
+ -->
